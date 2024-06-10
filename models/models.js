@@ -34,7 +34,27 @@ const Scheta = sequelize.define('Счета', {
     freezeTableName: true,
 })
 
+
+
+const Provodki = sequelize.define('Проводки', {
+    Код: {type: DataTypes.INTEGER, primaryKey: true},
+    Дата: {type: DataTypes.DATE},
+    Содержание: {type: DataTypes.STRING},
+    Сумма: {type: DataTypes.FLOAT},
+    'Расходный счет': {type: DataTypes.INTEGER},
+    'Приходный счет': {type: DataTypes.INTEGER},
+    Договор: {type: DataTypes.STRING},
+    'По договору': {type: DataTypes.BOOLEAN},
+    Основание: {type: DataTypes.STRING},
+    Примечание: {type: DataTypes.TEXT},
+    DateCreate: {type: DataTypes.DATE},
+
+},{
+    timestamps: false,
+    freezeTableName: true,
+})
 module.exports = {
     User,
-    Scheta
+    Scheta,
+    Provodki
 }

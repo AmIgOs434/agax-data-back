@@ -1,6 +1,6 @@
 const uuid = require('uuid')
 const path = require('path');
-const { User, Scheta } = require('../models/models')
+const { User, Scheta, Provodki } = require('../models/models')
 const ApiError = require('../error/ApiError');
 const jwt = require('jsonwebtoken')
 const { Op } = require('sequelize');
@@ -15,6 +15,33 @@ const generateJwt = (id, email, login,phone,name) => {
 
 
 class deviceController {
+
+
+
+  async getProvodkiByRashod(req, res) {
+    const {id} = req.params
+    const user = await Provodki.findAll(
+        {
+            where: {'Расходный счет':id}
+        },
+    )
+    return res.json(user)
+}
+async getProvodkiByPrihod(req, res) {
+  const {id} = req.params
+  const user = await Provodki.findAll(
+      {
+          where: {'Приходный счет':id}
+      },
+  )
+  return res.json(user)
+}
+
+
+
+
+
+
 
 
 
